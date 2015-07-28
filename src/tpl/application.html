@@ -1,0 +1,34 @@
+<div ng-init="app.settings.asideFolded = true; app.settings.asideDock = true;" ng-controller="ApplicationCtrl">
+  <div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">{{ org.entity.name }} > {{ space.name }} > {{ application.entity.name }}</h1>
+  </div>
+
+  <div class="wrapper-md chart-wrapper">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div cpu-chart data="usageData" metric-filter="cpu" metric-divisor="1" y-axis-label="CPU (%)" class="live-chart"></div>
+        </div>
+      </div>
+
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div cpu-chart data="usageData" metric-filter="mem" metric-divisor="1048576" y-axis-label="Memory (Mb)" class="live-chart"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="wrapper-md">
+
+    <div class="panel no-border">
+      <div class="panel-heading wrapper b-b b-light">Application Logs</div>
+
+      <div id="log-content" scroll-glue>
+        <pre ng-bind="logs"></pre>
+      </div>
+
+    </div>
+  </div>
+</div>

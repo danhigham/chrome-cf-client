@@ -1,0 +1,22 @@
+<div class="bg-light lter b-b wrapper-md" ng-init="app.settings.asideFolded = true; app.settings.asideDock = true;" ng-controller="OrganizationCtrl">
+  <h1 class="m-n font-thin h3">{{ org.entity.name }}</h1>
+</div>
+
+<div class="wrapper-md">
+
+  <div class="row" ng-repeat="row in spaceDetails | partition:4">
+
+    <div class="col-sm-3" ng-repeat="space in row">
+      <!-- <div class="panel panel-default no-border">
+
+        <div class="panel-heading">
+          {{space.name}}
+        </div> -->
+
+        <div space-donut class="space-donut" data="space.apps" height="300" width="300" space="{{space.name}}"></div>
+
+      <!-- </div> -->
+    </div>
+
+  </div>
+</div>

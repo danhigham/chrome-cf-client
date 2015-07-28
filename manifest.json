@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "Cloud Foundry Client",
+  "description": "A Cloud Foundry client with loads of whizzy stuff!",
+  "version": "1.0",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "scripts": ["src/js/loader.js"]
+  },
+  "permissions": [
+    "tabs",
+    "webRequest",
+    "webRequestBlocking",
+    "https://login.run.pivotal.io/",
+    "https://api.run.pivotal.io/"
+  ]
+}

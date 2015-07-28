@@ -1,0 +1,101 @@
+<div ng-init="app.settings.asideFolded = true; app.settings.asideDock = true;" ng-controller="SpaceCtrl">
+  <div class="bg-light lter b-b wrapper-md">
+    <h1 class="m-n font-thin h3">{{ org.entity.name }} > {{ space.name }}</h1>
+  </div>
+
+  <div class="wrapper-md">
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="panel panel-default">
+
+          <div class="panel-heading">
+            <span class="label bg-danger pull-right m-t-xs">4 left</span>
+            Apps
+          </div>
+
+          <table class="table table-striped m-b-none">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>State</th>
+                <th>Instances</th>
+                <th>Memory</th>
+                <th>Disk</th>
+                <th>URLs</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="app in space.apps" ui-sref='app.application({id: app.guid})'>
+                <td>{{ app.name }}</td>
+                <td>{{ app.state }}</td>
+                <td>{{ app.instances }}</td>
+                <td>{{ app.memory }}M</td>
+                <td>{{ app.disk_quota }}M</td>
+                <td><a ng-repeat="url in app.urls" href="http://{{url}}" target="_blank">http://{{url}}&nbsp;</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">Services</div>
+          <table class="table table-striped m-b-none">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Service</th>
+                <th>Plan</th>
+                <!-- <th>Bound App(s)</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="service in space.services">
+                <td>{{ service.name }}</td>
+                <td>{{ service.service_plan.service.label }}</td>
+                <td>{{ service.service_plan.name }}</td>
+                <!-- <td></td> -->
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Application Events
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped b-t b-light">
+          <thead>
+            <tr>
+              <th>Application</th>
+              <th>Instance</th>
+              <th>Message</th>
+              <th>Exit Status</th>
+              <th>Timestamp</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr dir-paginate="event in appEvents | itemsPerPage: pageSize" current-page="currentPage">
+              <td>{{ lookupAppFromRootScope(event.entity.app_guid).name }}</td>
+              <td>{{ event.entity.instance_index }}</td>
+              <td>{{ event.entity.exit_description }}</td>
+              <td>{{ event.entity.exit_status }}</td>
+              <td>{{ event.entity.timestamp }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <footer class="panel-footer">
+        <div class="row">
+          <div class="col-sm-4 text-right text-center-xs">
+            <dir-pagination-controls boundary-links="true" template-url="tpl/dirPagination.tpl.html"></dir-pagination-controls>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </div>
+</div>

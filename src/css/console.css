@@ -1,0 +1,90 @@
+#log-content {
+  height : 410px;
+  overflow-y: scroll;
+  padding: 10px 15px;
+}
+
+#log-content > pre {
+  display: block;
+  margin : 0;
+  padding : 0;
+  background-color : #fff;
+  border-color : #fff;
+  color : #363f44;
+}
+
+.arc path {
+  stroke: #fff;
+}
+
+g.app-info text {
+  text-anchor: middle;
+  font-size: 1.2em;
+}
+
+.space-donut-app {
+  cursor: pointer;
+}
+
+text.space-label {
+  text-anchor: middle;
+  font-size: 1.7em;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+.chart-wrapper .panel {
+  border: none;
+}
+
+.live-chart, .chart-wrapper {
+  background-color: #0a1015;
+}
+
+.live-chart text {
+  stroke-width: 0.5px;
+  fill: none;
+  font-weight: 100;
+  stroke: rgb(80, 123, 155);
+}
+
+.live-chart line.horizontalGrid,
+.live-chart line.verticalGrid,
+.live-chart g.axis {
+  stroke: #1c2b36;
+}
+
+.live-chart .axis path, .live-chart .axis line {
+  stroke: none;
+}
+
+.wait-spinner {
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  background: rgba(255,255,255,0.5);
+  display: none;
+}
+
+.wait-spinner > svg {
+  position: relative;
+  display: block;
+  margin : 0 auto;
+}
